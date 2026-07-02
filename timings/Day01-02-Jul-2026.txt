@@ -1,0 +1,21 @@
+what i did today 
+
+1 hour 
+created github account ,repo , local folder & file and connected to git hub account for push
+
+
+
+
+6 hours  
+
+Ubuntu/WSL setup
+✅ Ansible installed
+✅ Inventory created
+✅ YAML playbook created
+✅ sudo configured
+✅ Nginx installed by Ansible
+✅ Nginx service running
+Installed Docker
+Fixed Docker permission issue
+Ran
+
