@@ -1,0 +1,35 @@
+---
+- name: Setup Docker Containers for Multiple Apps
+  hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+
+    - name: Pull nginx Image
+      community.docker.docker_image:
+        name: nginx
+        source: pull
+
+    - name: Pull mysql Image
+      community.docker.docker_image:
+        name: mysql:5.7
+        source: pull
+
+    - name: Run nginx Container
+      community.docker.docker_container:
+        name: web-app
+        image: nginx
+        state: started
+        published_ports:
+          - "8080:80"
+
+    - name: Run mysql Container
+      community.docker.docker_container:
+        name: database-app
+        image: mysql:5.7
+        state: started
+        env:
+          MYSQL_ROOT_PASSWORD: root123
+        published_ports:
+          - "3306:3306"    
