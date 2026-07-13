@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = "pathnex-web-app"
+    }
+
+    stages {
+
+        stage("Build Docker Image") {
+            steps {
+                script {
+                    docker.build("${IMAGE_NAME}")
+                }
+            }
+        }
+
+        stage("Push Docker Image") {
+            steps {
+                script {
+                    docker.withRegistry("https://docker.io", "docker-credentials") {
+                        docker.image("${IMAGE_NAME}").push("latest")
+                    }
+                }
+            }
+        }
+
+        stage("Deploy to Kubernetes") {
+            steps {
+                sh "kubectl apply -f deployment.yaml"
+            }
+        }
+    }
+}
