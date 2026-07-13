@@ -1,0 +1,32 @@
+# Day 4 - Jenkins
+
+what i did today
+
+English videos                                1 hour
+
+
+## Topics Covered                             5 hours   
+
+- Installed Git
+- Installed Java
+- Installed Jenkins
+- Configured Jenkins Repository
+- Imported Jenkins GPG Key
+- Started Jenkins Service
+- Opened Port 8080 in AWS Security Group
+- Accessed Jenkins Dashboard
+- Created First Jenkins Pipeline
+
+## Jenkins Pipeline
+
+Build → Test → Deploy
+
+## Concepts Learned
+
+- CI/CD
+- Pipeline
+- Agent
+- Stage
+- Steps
+- Echo
+- Security Groups
