@@ -1,0 +1,19 @@
+what i did today 
+
+morning class :3hours
+revision :1 hours 
+english practice : 2 hour
+coding : 3 hour
+ 
+Day 13 – Advanced Automation with CloudFormation and CI/CD
+
+Completed:
+- Docker COPY vs ADD practical
+- Docker image build and container verification
+- Ansible multi-node Nginx playbook
+- Terraform IAM User and IAM Policy configuration
+- Kubernetes ConfigMap, Secret, and Deployment YAML files
+- Jenkins Pipeline creation
+- GitLab CI/CD pipeline creation
+
+Note:.Kubernetes deployment could not be tested due to EKS RBAC/access permissions.
