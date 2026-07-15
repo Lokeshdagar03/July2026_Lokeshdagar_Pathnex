@@ -1,0 +1,5 @@
+FROM alpine:latest
+WORKDIR /opt/pathnex/alpine-app
+copy app.sh .
+run chmod +x app.sh
+cmd ["./app.sh"]
