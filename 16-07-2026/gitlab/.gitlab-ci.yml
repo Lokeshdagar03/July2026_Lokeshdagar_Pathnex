@@ -1,0 +1,24 @@
+stages:
+  - build
+  - push
+  - deploy
+
+build:
+  stage: build
+  script:
+    - docker build -t pathnex-web-app .
+
+push:
+  stage: push
+  script:
+    - docker push pathnex-web-app
+
+deploy:
+  stage: deploy
+  script:
+    - |
+      if [ "$CI_COMMIT_REF_NAME" = "main" ]; then
+        kubectl --context=us-east apply -f kubernetes/deployment.yaml
+      else
+        kubectl --context=us-west apply -f kubernetes/deployment.yaml
+      fi
