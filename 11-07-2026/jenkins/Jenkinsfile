@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = "pathnex-web-app"
+    }
+
+    stages {
+
+        stage('Build') {
+            steps {
+                sh 'docker build -t ${IMAGE_NAME} .'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'echo Running Tests...'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'kubectl apply -f deployment.yaml'
+            }
+        }
+    }
+}
