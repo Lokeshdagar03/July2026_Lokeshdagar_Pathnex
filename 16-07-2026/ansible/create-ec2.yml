@@ -1,0 +1,10 @@
+---
+- name: Launch EC2 Instances
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Example EC2 launch configuration
+      debug:
+        msg: "This playbook would launch EC2 instances in multiple regions."
