@@ -1,0 +1,28 @@
+---
+- name: Install Prometheus for Monitoring
+  hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+
+    - name: Install Prometheus
+      dnf:
+        name:
+          - prometheus
+          - prometheus-node-exporter
+        state: present
+
+    - name: Enable and Start Prometheus
+      service:
+        name: prometheus
+        state: started
+        enabled: yes
+      ignore_errors: yes
+
+    - name: Enable and Start Node Exporter
+      service:
+        name: prometheus-node-exporter
+        state: started
+        enabled: yes
+      ignore_errors: yes
