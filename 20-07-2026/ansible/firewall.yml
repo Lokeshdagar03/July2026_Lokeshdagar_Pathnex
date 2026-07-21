@@ -1,0 +1,36 @@
+---
+- name: Configure Firewall Security
+  hosts: all
+  become: yes
+
+  tasks:
+
+  - name: Install firewalld
+    dnf:
+      name: firewalld
+      state: present
+
+  - name: Start firewall service
+    service:
+      name: firewalld
+      state: started
+      enabled: yes
+
+
+  - name: Allow SSH
+    firewalld:
+      service: ssh
+      permanent: yes
+      state: enabled
+
+
+  - name: Allow HTTP
+    firewalld:
+      service: http
+      permanent: yes
+      state: enabled
+
+
+  - name: Reload firewall
+    command:
+      firewall-cmd --reload

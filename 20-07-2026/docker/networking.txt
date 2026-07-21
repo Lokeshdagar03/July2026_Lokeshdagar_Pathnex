@@ -1,0 +1,27 @@
+# Create a custom Docker bridge network
+docker network create pathnex-network
+
+# Run first container
+docker run -dit \
+  --name c1 \
+  --network pathnex-network \
+  ubuntu
+
+# Run second container
+docker run -dit \
+  --name c2 \
+  --network pathnex-network \
+  ubuntu
+
+# Verify network
+docker network ls
+
+# Inspect network
+docker network inspect pathnex-network
+
+# Test connectivity
+docker exec -it c1 bash
+
+apt update
+apt install -y iputils-ping
+ping c2
