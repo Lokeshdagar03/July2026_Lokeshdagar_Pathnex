@@ -1,0 +1,24 @@
+---
+- name: Backup and Restore Files
+  hosts: all
+  become: yes
+
+  tasks:
+
+    - name: Create backup of /etc directory
+      archive:
+        path: /etc
+        dest: /tmp/etc-backup.tar.gz
+        format: gz
+
+    - name: Fetch backup to Ansible control node
+      fetch:
+        src: /tmp/etc-backup.tar.gz
+        dest: ./backup/
+        flat: yes
+
+    - name: Restore backup
+      unarchive:
+        src: /tmp/etc-backup.tar.gz
+        dest: /
+        remote_src: yes
