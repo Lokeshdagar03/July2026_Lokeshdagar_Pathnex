@@ -1,0 +1,17 @@
+---
+- name: Deploy Nginx across multiple Kubernetes clusters
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Configure kubectl for Cluster 1
+      command: kubectl config use-context us-east-cluster
+
+    - name: Deploy Nginx on Cluster 1
+      command: kubectl apply -f ../kubernetes/deployment.yaml
+
+    - name: Configure kubectl for Cluster 2
+      command: kubectl config use-context us-west-cluster
+
+    - name: Deploy Nginx on Cluster 2
+      command: kubectl apply -f ../kubernetes/deployment.yaml
