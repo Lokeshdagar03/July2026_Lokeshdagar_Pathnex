@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    environment {
+        REGISTRY_PASSWORD = credentials('docker-registry-password')
+    }
+
+    stages {
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    docker.build("pathnex-web-app")
+                }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://docker.io', 'docker-credentials') {
+                        docker.image("pathnex-web-app").push("latest")
+                    }
+                }
+            }
+        }
+    }
+}
