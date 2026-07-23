@@ -1,0 +1,38 @@
+---
+- name: Configure Auto-healing for Web Server
+  hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+
+    - name: Install nginx
+      dnf:
+        name: nginx
+        state: present
+
+    - name: Ensure nginx service is running
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Create systemd override directory
+      file:
+        path: /etc/systemd/system/nginx.service.d
+        state: directory
+
+    - name: Configure auto restart
+      copy:
+        dest: /etc/systemd/system/nginx.service.d/override.conf
+        content: |
+          [Service]
+          Restart=always
+
+    - name: Reload systemd
+      command: systemctl daemon-reload
+
+    - name: Restart nginx
+      service:
+        name: nginx
+        state: restarted
