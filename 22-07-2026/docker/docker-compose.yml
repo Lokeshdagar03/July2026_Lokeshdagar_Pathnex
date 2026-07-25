@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:8
+    container_name: pathnex-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  web:
+    image: nginx
+    container_name: pathnex-web
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+
+volumes:
+  mysql-data:
