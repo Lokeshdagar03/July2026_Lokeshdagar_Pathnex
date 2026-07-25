@@ -1,0 +1,16 @@
+# Install Microservice Helm Chart
+
+helm install pathnex-microservice ./microservice-chart
+
+# Check Helm Releases
+helm list
+
+# Check Kubernetes Resources
+kubectl get pods
+kubectl get svc
+
+# Upgrade Release
+helm upgrade pathnex-microservice ./microservice-chart
+
+# Uninstall Release
+helm uninstall pathnex-microservice
