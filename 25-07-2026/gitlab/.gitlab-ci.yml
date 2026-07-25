@@ -1,0 +1,13 @@
+stages:
+  - monitor
+  - test
+
+monitor:
+  stage: monitor
+  script:
+    - echo "CloudWatch Monitoring"
+
+test:
+  stage: test
+  script:
+    - echo "Running tests..."
