@@ -1,0 +1,13 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - docker build -t pathnex-web-app .
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying with GitLab Secrets"
