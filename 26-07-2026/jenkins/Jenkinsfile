@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_ACCESS_KEY_ID = credentials('aws-access-key')
+        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key')
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building Docker image...'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying securely...'
+            }
+        }
+    }
+}
