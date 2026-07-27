@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'zip -r lambda.zip lambda/'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying Lambda...'
+            }
+        }
+    }
+}
