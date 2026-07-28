@@ -1,0 +1,11 @@
+---
+- name: Setup VPC Peering Between Accounts
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Create VPC Peering Connection
+      command: >
+        aws ec2 create-vpc-peering-connection
+        --vpc-id vpc-12345678
+        --peer-vpc-id vpc-87654321
