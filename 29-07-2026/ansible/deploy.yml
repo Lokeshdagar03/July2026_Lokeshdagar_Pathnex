@@ -1,0 +1,19 @@
+---
+- name: Complete Pathnex Deployment Setup
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+
+    - name: Check Docker
+      command: docker --version
+      register: docker_version
+      changed_when: false
+
+    - name: Display Docker version
+      debug:
+        var: docker_version.stdout
+
+    - name: Start Pathnex application
+      command: docker compose -f ../docker/docker-compose.yml up -d
