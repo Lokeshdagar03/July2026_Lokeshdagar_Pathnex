@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: production-service
+  namespace: production
+
+spec:
+  type: LoadBalancer
+
+  selector:
+    app: production-app
+
+  ports:
+  - port: 80
+    targetPort: 80
