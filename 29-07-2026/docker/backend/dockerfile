@@ -1,0 +1,13 @@
+FROM node:22-alpine
+
+RUN addgroup -S pathnex && adduser -S pathnexuser -G pathnex
+
+WORKDIR /app
+
+COPY server.js .
+
+USER pathnexuser
+
+EXPOSE 5000
+
+CMD ["node", "server.js"]

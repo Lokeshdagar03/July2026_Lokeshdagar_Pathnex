@@ -1,0 +1,25 @@
+services:
+
+  frontend:
+    image: nginx:latest
+    container_name: pathnex-frontend
+    ports:
+      - "8080:80"
+
+  backend:
+    build: ./backend
+    container_name: pathnex-backend
+    ports:
+      - "5000:5000"
+
+  database:
+    image: mysql:8
+    container_name: pathnex-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: pathnex
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
