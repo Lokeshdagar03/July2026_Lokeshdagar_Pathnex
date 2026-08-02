@@ -1,9 +1,0 @@
-- name: Install Nginx on Pathnex server
-  hosts: all
-  become: yes
-
-  tasks:
-    - name: install nginx
-      apt:
-        name: nginx
-        state: present
