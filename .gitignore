@@ -1,0 +1,17 @@
+cd ~/L1-01Aug2026
+
+cat > .gitignore <<'EOF'
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Downloaded archives/installers
+*.tar.gz
+
+# Sensitive files
+*.tfvars
+*.tfvars.json
+EOF
