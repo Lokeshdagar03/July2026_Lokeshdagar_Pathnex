@@ -1,0 +1,16 @@
+stages:
+  - checkout
+  - list
+
+checkout:
+  stage: checkout
+  script:
+    - echo "Repository checkout completed"
+    - git status
+
+list_files:
+  stage: list
+  script:
+    - pwd
+    - ls -la
+    - find . -maxdepth 2 -type f
