@@ -1,0 +1,17 @@
+---
+- name: Setup Auto Scaling Group
+  hosts: localhost
+  connection: local
+  become: no
+
+  tasks:
+    - name: Create Auto Scaling Group
+      amazon.aws.autoscaling_group:
+        name: pathnex-asg
+        region: ap-south-1
+        launch_config_name: pathnex-launch-config
+        min_size: 1
+        max_size: 3
+        desired_capacity: 2
+        vpc_zone_identifier:
+          - subnet-xxxxxxxx
