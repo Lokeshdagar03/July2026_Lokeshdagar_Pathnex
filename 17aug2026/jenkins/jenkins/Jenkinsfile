@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    docker.build("pathnex-app")
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying application to Kubernetes"
+            }
+        }
+    }
+}
