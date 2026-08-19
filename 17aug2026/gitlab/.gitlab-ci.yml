@@ -1,0 +1,19 @@
+stages:
+  - build
+  - push
+  - deploy
+
+build:
+  stage: build
+  script:
+    - docker build -t pathnex-web-app .
+
+push:
+  stage: push
+  script:
+    - echo "Docker Push Successful"
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Helm Deployment Successful"

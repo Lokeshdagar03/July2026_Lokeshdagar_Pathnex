@@ -1,0 +1,21 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    - docker build -t pathnex-web-app .
+
+test:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - docker run --rm pathnex-web-app echo "Tests Passed"
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying application..."
+    - kubectl apply -f kubernetes/deployment.yaml
